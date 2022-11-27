@@ -1,9 +1,26 @@
 import React, { useEffect, useState } from 'react'
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { Typography } from '@mui/material';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 export default function App() {
 
   const [backendData, setBackendData] = useState([{}])
   const [text, setText] = useState("");
+  const centerdiv = {
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    minHeight: "100vh",
+    gap: "10px"
+  }
 
   useEffect(() => {
     fetch("/bring").then(
@@ -32,20 +49,29 @@ export default function App() {
   }
 
   return (
-    <div>
+    <div style={centerdiv}>
       {(typeof backendData === 'undefined') ? (
         <p>Aun no hay texto...</p>
       ) : (
-        <p>{backendData.map(x => x.texto)}</p>
+        <Typography variant="h2"> {backendData.map(x => x.texto)} </Typography>
+
       )}
 
       <div>
-        <input type="text"
-          maxLength={30}
+        <TextField
           value={text}
+          inputProps={{ maxLength: 30, size: 30 }}
           onChange={(e) => setText(e.target.value)}
+          variant="outlined"
         />
-        <button onClick={sendData}>Cambiar texto</button>
+
+      </div>
+      <div>
+        <text>{"\n"}</text>
+      </div>
+
+      <div>
+        <Button variant="outlined" onClick={sendData}> Cambiar texto</Button>
       </div>
 
     </div>

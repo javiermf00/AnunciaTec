@@ -3,12 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 
 var mongoose = require('mongoose')
-//var mongodb = "mongodb://localhost/proyectoFinal"
-var mongodb = 'mongodb+srv://root:root@cluster0.7mbmooe.mongodb.net/?retryWrites=true&w=majority/test'
+var mongodb = process.env.MONGO_URI
 mongoose.connect(mongodb, { useNewUrlParser: true })
 mongoose.Promise = global.Promise
 var db = mongoose.connection
