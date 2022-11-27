@@ -18,14 +18,15 @@ exports.bringanuncio = function (req, res) {
 
 exports.updateanuncio = function (req, res) {
     let newtexto = req.body;
+    console.log(newtexto);
     const filter = { id: "1" };
-    const updated = { texto: newtexto };
+    const updated = { texto: newtexto.texto };
 
-    Anuncio.findOne({ id: "1" }, function (err, result) {
+    Anuncio.findOneAndUpdate(filter, updated, function (err, result) {
         if (err) {
             console.log(err)
         }
-        User.findOneAndUpdate(filter, updated)
+        console.log("se logro")
     })
 }
 
