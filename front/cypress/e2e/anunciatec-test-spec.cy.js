@@ -1,6 +1,6 @@
 describe('anunciaTec E2E Tests', () => {
   beforeEach('passes', () => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://javiermf.rocks/')
   })
   it('Tes1. Should visit the main page', () => {
 
