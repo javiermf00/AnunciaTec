@@ -53,12 +53,13 @@ export default function App() {
       {(typeof backendData === 'undefined') ? (
         <p>Aun no hay texto...</p>
       ) : (
-        <Typography variant="h2"> {backendData.map(x => x.texto)} </Typography>
+        <Typography id="typography" variant="h2"> {backendData.map(x => x.texto)} </Typography>
 
       )}
 
       <div>
         <TextField
+          id="textfield"
           value={text}
           inputProps={{ maxLength: 30, size: 30 }}
           onChange={(e) => setText(e.target.value)}
@@ -71,7 +72,7 @@ export default function App() {
       </div>
 
       <div>
-        <Button variant="outlined" onClick={sendData}> Cambiar texto</Button>
+        <Button id="button" variant="outlined" onClick={sendData}> Cambiar texto</Button>
       </div>
 
     </div>
